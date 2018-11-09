@@ -19,7 +19,7 @@ function headerController($rootScope, store, $location, authManager, AuthService
     return a.username;
   }
 
-  function logout(){
+  function logout() {
     AuthService.logout();
   }
   vm.logout = logout;

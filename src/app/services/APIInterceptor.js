@@ -4,18 +4,18 @@ angular
 
 function APIInterceptor($rootScope, UserService) {
   var vm = this;
-  vm.request = function(config) {
-    var currentUser = UserService.getCurrentUser();
+  vm.request = function (config) {
+    var currentUser = UserService.getCurrentUser(); // eslint-disable-line no-unused-vars
     var currentToken = UserService.getCurrentToken();
-    var access_token = currentToken ? currentToken : null;
-    if (access_token) {
-      config.headers.authorization = 'Bearer ' + access_token;
+    var accessToken = currentToken ? currentToken : null;
+    if (accessToken) {
+      config.headers.authorization = 'Bearer ' + accessToken;
     }
     return config;
   };
-  vm.responseError = function(response) {
+  vm.responseError = function (response) {
     if (response.status === 401) {
-        $rootScope.$broadcast('unauthorized');
+      $rootScope.$broadcast('unauthorized');
     }
     return response;
   };

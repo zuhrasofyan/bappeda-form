@@ -3,7 +3,7 @@ angular
   .run(function ($rootScope, $state, store, jwtHelper, $location, authManager) {
     // authManager.checkAuthOnRefresh();
     // run check on each of refreshed state
-    $rootScope.$on('$locationChangeStart', function () {
+    $rootScope.$on('$locationChangeStart', function () { // eslint-disable-line angular/on-watch
       // Get the JWT that is saved in localStorage
       // and if it is there, check whether it is expired.
       // If it isn't, set the user's auth state
@@ -27,6 +27,6 @@ angular
       .primaryPalette('orange')
       .accentPalette('green');
     $mdThemingProvider.theme('greenTheme')
-      .primaryPalette('green')
+      .primaryPalette('green');
     // $mdThemingProvider.setDefaultTheme('altTheme');
   });

@@ -6,19 +6,13 @@ angular
     controllerAs: 'vm'
   });
 
-function homeDashboardController(UserService, $http) {
-  vm = this;
-
-  //general
-  
-
-  //for tab user 
+function homeDashboardController(UserService, $http) { // eslint-disable-line no-unused-vars
+  var vm = this;
+  // for tab user
   function getUser() {
     var a = UserService.getCurrentUser();
     return a;
   }
 
   vm.user = getUser();
-
-  
 }

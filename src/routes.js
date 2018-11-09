@@ -5,7 +5,6 @@ angular
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
   $locationProvider.html5Mode(true).hashPrefix('!');
- 
 
   $stateProvider
     .state('home', {
@@ -21,7 +20,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
       component: 'dashboard',
       abstract: true,
       resolve: {
-        loginRequired : loginRequired
+        loginRequired: loginRequired
       }
     })
     .state('dashboard.home', {
@@ -33,21 +32,21 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
       component: 'userDashboard'
     });
 
-    // otherwise will take care of routing the user to the specified url
-    $urlRouterProvider.otherwise('/');
+  // otherwise will take care of routing the user to the specified url
+  $urlRouterProvider.otherwise('/');
 
-    $httpProvider.interceptors.push('APIInterceptor');
+  $httpProvider.interceptors.push('APIInterceptor');
 }
 
-function loginRequired ($q, $location, authManager, $rootScope) {
+function loginRequired($q, $location, authManager, $rootScope) {
   var deferred = $q.defer();
   var checkAuth = $rootScope.isAuthenticated;
-  //using authManager.isAuthenticated, unfortunately we can still access restricted state if we manually enter URL
-  //var a = authManager.isAuthenticated;
+  // using authManager.isAuthenticated, unfortunately we can still access restricted state if we manually enter URL
+  // var a = authManager.isAuthenticated;
   if (checkAuth) {
     deferred.resolve();
   } else {
-    $location.path('/')
+    $location.path('/');
   }
   return deferred.promise;
-};
+}

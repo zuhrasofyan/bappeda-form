@@ -7,12 +7,12 @@ angular
   });
 
 function userDashboardController(UserService, $http) {
-  vm = this;
+  var vm = this;
 
-  //general
+  // general
   vm.hello = "hello";
 
-  //for tab user 
+  // for tab user
   function getUser() {
     var a = UserService.getCurrentUser();
     return a;
@@ -20,19 +20,11 @@ function userDashboardController(UserService, $http) {
 
   vm.user = getUser();
 
-  //for tab allUser
-  // var request = $http.get('http://localhost:1337/officer/get-all-user').then(function(response){
-  //   vm.allUser = response.data;
-  //   return response.data;
-  // });
-
-  function allUser(){
+  function allUser() {
     return $http.get('http://localhost:1337/officer/get-all-user');
   }
 
-  allUser().then(function(d){
+  allUser().then(function (d) {
     vm.allUser = d.data;
   });
-
-  
 }
