@@ -13,9 +13,9 @@
 <md-toolbar>
   <div layout="row" layout-align="center center">
     <div flex-offset="5">
-      
-      <md-menu hide-gt-sm>
-        <md-button class="md-fab md-mini" hide-gt-sm aria-label="Open menu" ng-click="$mdOpenMenu()" >
+
+      <md-menu hide-gt-sm ng-if="vm.isAuthenticated">
+        <md-button class="md-fab md-mini" hide-gt-sm aria-label="Open menu" ng-click="$mdOpenMenu()">
           <span class="glyphicon glyphicon-menu-hamburger"></span>
         </md-button>
         <md-menu-content width="3">

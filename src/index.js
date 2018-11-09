@@ -1,9 +1,9 @@
 angular
   .module('app', ['ui.router', 'angular-storage', 'angular-jwt', 'ngMaterial', 'ngMessages'])
-  .run(function ($rootScope, $state, store, jwtHelper, $location, authManager){
-    //authManager.checkAuthOnRefresh();
-    //run check on each of refreshed state
-    $rootScope.$on('$locationChangeStart', function() {
+  .run(function ($rootScope, $state, store, jwtHelper, $location, authManager) {
+    // authManager.checkAuthOnRefresh();
+    // run check on each of refreshed state
+    $rootScope.$on('$locationChangeStart', function () {
       // Get the JWT that is saved in localStorage
       // and if it is there, check whether it is expired.
       // If it isn't, set the user's auth state
@@ -14,20 +14,19 @@ angular
             authManager.authenticate(store.get('user'), token);
           }
         }
-      }
-      else {
+      } else {
         // Otherwise, redirect to the home route
         $rootScope.isAuthenticated = false;
-        //do not use $state.go('login') since it will redirect everything to login even when in the unprotected state
-        //$location.path('/');
+        // do not use $state.go('login') since it will redirect everything to login even when in the unprotected state
+        // $location.path('/');
       }
     });
   })
-  .config(function($mdThemingProvider){
+  .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('altTheme')
       .primaryPalette('orange')
       .accentPalette('green');
     $mdThemingProvider.theme('greenTheme')
       .primaryPalette('green')
-    //$mdThemingProvider.setDefaultTheme('altTheme');
-  })
+    // $mdThemingProvider.setDefaultTheme('altTheme');
+  });

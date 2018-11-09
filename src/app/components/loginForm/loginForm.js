@@ -1,29 +1,24 @@
 angular
-  .module('app')
-  .component('loginForm', {
-    //restrict: 'E',
-    templateUrl: 'app/components/loginForm/loginForm.html',
-    controller : loginFormController,
-    controllerAs: 'vm'
-  });
+.module('app')
+.component('loginForm', {
+  templateUrl: 'app/components/loginForm/loginForm.html',
+  controller: loginFormController,
+  controllerAs: 'vm'
+});
 
-function loginFormController ($scope, $http, $q, store, $location, jwtHelper, AuthService){
-    var vm = this;
-    var deferred = $q.defer();
+function loginFormController($scope, $http, $q, store, $location, jwtHelper, AuthService) {
+  var vm = this;
 
-    vm.hello = "hello world";
-    vm.formLogin = {};
+  vm.hello = "hello world";
+  vm.formLogin = {};
 
-    vm.myToken = '';
-    
-    function clickLogin(data) {
-      AuthService.submitLogin(data);
-      if (store.get('token')) {
-        vm.myToken = store.get('token');
-      }
-      
+  vm.myToken = '';
+
+  function clickLogin(data) {
+    AuthService.submitLogin(data);
+    if (store.get('token')) {
+      vm.myToken = store.get('token');
     }
-    vm.clickLogin = clickLogin;
-    
-    //vm.submitLogin = AuthService.submitLogin(vm.formLogin);
   }
+  vm.clickLogin = clickLogin;
+}

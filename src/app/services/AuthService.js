@@ -23,9 +23,15 @@ angular
           $state.go('dashboard.home');
           //console.log(jwtHelper.decodeToken(store.get('token')));
           //console.log(jwtHelper.getTokenExpirationDate(store.get('token')));
+        } else {
+          if (result.status === 400) {
+            alert(result.data.message);
+          } else if (result.status === 401) {
+            alert(result.data.message);
+          } else {
+            alert(result.data.message);
+          }         
         }
-        //TODO: else check if bad credential (result.status !== 200) return, show notification
-        //else {}
       })
     };
     
