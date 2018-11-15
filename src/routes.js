@@ -30,6 +30,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
     .state('dashboard.user', {
       url: '/profile',
       component: 'userDashboard'
+    })
+    .state('formSurvey', {
+      url: '/surveyLayakHuni',
+      component: 'layakHuniForm'
     });
 
   // otherwise will take care of routing the user to the specified url

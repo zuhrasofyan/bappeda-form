@@ -22,6 +22,10 @@ angular
       }
     });
   })
+  .constant('configSettings', {
+    baseUrl: 'http://localhost:1337/'
+    // baseUrl: 'https://bappeda.bandaacehkota.go.id/service/kpk'
+  })
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('altTheme')
       .primaryPalette('orange')
