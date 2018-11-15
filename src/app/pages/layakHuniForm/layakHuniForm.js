@@ -6,7 +6,7 @@ angular
     controllerAs: 'vm'
   });
 
-function layakHuniFormController(SurveyLayakHuniService, configSettings) {
+function layakHuniFormController(SurveyLayakHuniService, configSettings, $scope) {
   var vm = this;
 
   // Construct initial data first for the survey form
@@ -63,4 +63,16 @@ function layakHuniFormController(SurveyLayakHuniService, configSettings) {
     delete vm.isiLayakHuni.desa;
   }
   vm.removeDesa = removeDesa;
+
+  // back and forth tab survey
+  vm.back = function () {
+    if ($scope.tabIndex > 0) {
+      $scope.tabIndex--;
+    }
+  };
+  vm.next = function () {
+    if ($scope.tabIndex < 2) {
+      $scope.tabIndex++;
+    }
+  };
 }

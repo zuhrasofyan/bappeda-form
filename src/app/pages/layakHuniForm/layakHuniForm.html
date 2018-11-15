@@ -7,8 +7,9 @@
       <!-- <pre><code>{{vm.isiLayakHuni}}</code></pre> -->
 
       <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
-        <md-tabs md-dynamic-height="true">
-          <md-tab label="Tab #1">
+
+        <md-tabs md-dynamic-height="true" md-selected="tabIndex" md-no-pagination="true">
+          <md-tab label="Data Diri">
             <md-content layout-padding>
               <h4>Data Diri</h4>
               <div layout="column" flex>
@@ -91,9 +92,17 @@
               </div>
             </md-content>
           </md-tab>
-          <md-tab label="Tab #2">2</md-tab>
-          <md-tab label="Tab #3">3</md-tab>
+          <md-tab label="Bagian 1">2</md-tab>
+          <md-tab label="Bagian 2">3</md-tab>
         </md-tabs>
+
+        <md-button ng-click="vm.back()" class="md-raised" ng-hide="tabIndex === 0">
+          <i class="glyphicon glyphicon-chevron-left"></i> Sebelumnya
+        </md-button>
+        <md-button ng-click="vm.next()" class="md-raised" ng-hide="tabIndex === 2">
+          Selanjutnya <i class="glyphicon glyphicon-chevron-right"></i>
+        </md-button>
+
       </form>
 
     </div>
