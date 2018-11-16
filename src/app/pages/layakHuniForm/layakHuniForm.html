@@ -1,100 +1,107 @@
 <div class="layak-huni">
   <div class="main">
     <fountain-header></fountain-header>
-    <div layout="column" style="margin-top: 5px;">
-      <h3>Form isian layak huni</h3>
+    <div layout="row" style="margin-top: 5px;">
+      <div flex-gt-sm="5" flex></div>
+      <div flex-gt-sm="90" flex="100">
 
-      <!-- <pre><code>{{vm.isiLayakHuni}}</code></pre> -->
+        <h3>Form isian layak huni</h3>
 
-      <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
+        <!-- <pre><code>{{vm.isiLayakHuni}}</code></pre> -->
 
-        <md-tabs md-dynamic-height="true" md-selected="tabIndex" md-no-pagination="true">
-          <md-tab label="Data Diri">
-            <md-content layout-padding>
-              <h4>Data Diri</h4>
-              <div layout="column" flex>
-                <div>
+        <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
 
-                  <md-input-container class="md-block">
-                    <label>Nama</label>
-                    <textarea name="nama" id="" ng-model="vm.isiLayakHuni.nama" rows="1" required></textarea>
-                    <div ng-messages="formLayakHuni.nama.$error">
-                      <div ng-message="required">Harus diisi.</div>
+          <div class="form-tab">
+            <md-tabs md-dynamic-height="true" md-selected="tabIndex" md-no-pagination="true">
+              <md-tab label="Data Diri">
+                <md-content layout-padding>
+                  <h4>Data Diri</h4>
+                  <div layout="column" flex>
+                    <div>
+
+                      <md-input-container class="md-block">
+                        <label>Nama</label>
+                        <textarea name="nama" id="" ng-model="vm.isiLayakHuni.nama" rows="1" required></textarea>
+                        <div ng-messages="formLayakHuni.nama.$error">
+                          <div ng-message="required">Harus diisi.</div>
+                        </div>
+                      </md-input-container>
+
+                      <div layout="row" flex>
+                        <md-input-container flex="90">
+                          <label>Jenis Kelamin</label>
+                          <md-select ng-model="vm.isiLayakHuni.jenisKelamin" name="jk" required>
+                            <md-optgroup label="Jenis Kelamin">
+                              <md-option ng-value="jk.jk" ng-repeat="jk in vm.jenisKelamin">{{jk.jk}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.jk.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <md-input-container class="md-block">
+                        <label>Usia (dalam tahun)</label>
+                        <input type="number" name="usia" id="" ng-model="vm.isiLayakHuni.usia" required min="15" max="110"></input>
+                        <div ng-messages="formLayakHuni.usia.$error">
+                          <div ng-message="required">Harus diisi</div>
+                          <div ng-message="min">Terlalu muda</div>
+                          <div ng-message="max">Terlalu tua</div>
+                        </div>
+                      </md-input-container>
+
+                      <div layout="row" flex>
+                        <md-input-container flex="90">
+                          <label>Pekerjaan</label>
+                          <md-select ng-model="vm.isiLayakHuni.pekerjaan" name="pekerjaan" required>
+                            <md-optgroup label="Pekerjaan">
+                              <md-option ng-value="kerja.kerja" ng-repeat="kerja in vm.pekerjaan">{{kerja.kerja}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.pekerjaan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <div layout="row" flex>
+                        <md-input-container flex="50">
+                          <label>Kecamatan</label>
+                          <!-- clear property desa if kecamatan changed -->
+                          <md-select ng-model="vm.isiLayakHuni.kecamatan" name="kecamatan" required ng-change="vm.removeDesa()">
+                            <md-optgroup label="Kecamatan">
+                              <md-option ng-value="kecamatan" ng-repeat="kecamatan in vm.kecamatanDesa">{{kecamatan.Nama_Kecamatan}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kecamatan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex="50">
+                          <label>Desa</label>
+                          <md-select ng-model="vm.isiLayakHuni.desa" name="desa" required ng-disabled="!vm.isiLayakHuni.kecamatan">
+                            <md-optgroup label="Kecamatan {{vm.isiLayakHuni.kecamatan.Nama_Kecamatan}}">
+                              <md-option ng-value="desa.DESA_ID" ng-repeat="desa in vm.isiLayakHuni.kecamatan.desa">{{desa.NAMA}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.desa.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
                     </div>
-                  </md-input-container>
-
-                  <div layout="row" flex>
-                    <md-input-container flex="90">
-                      <label>Jenis Kelamin</label>
-                      <md-select ng-model="vm.isiLayakHuni.jenisKelamin" name="jk" required>
-                        <md-optgroup label="Jenis Kelamin">
-                          <md-option ng-value="jk.jk" ng-repeat="jk in vm.jenisKelamin">{{jk.jk}}</md-option>
-                        </md-optgroup>
-                      </md-select>
-                      <div ng-messages="formLayakHuni.jk.$error">
-                        <div ng-message="required">Harus diisi.</div>
-                      </div>
-                    </md-input-container>
                   </div>
+                </md-content>
+              </md-tab>
+              <md-tab label="Bagian 1">2</md-tab>
+              <md-tab label="Bagian 2">3</md-tab>
+            </md-tabs>
+          </div>
 
-                  <md-input-container class="md-block">
-                    <label>Usia (dalam tahun)</label>
-                    <input type="number" name="usia" id="" ng-model="vm.isiLayakHuni.usia" required min="15" max="110"></input>
-                    <div ng-messages="formLayakHuni.usia.$error">
-                      <div ng-message="required">Harus diisi</div>
-                      <div ng-message="min">Terlalu muda</div>
-                      <div ng-message="max">Terlalu tua</div>
-                    </div>
-                  </md-input-container>
-
-                  <div layout="row" flex>
-                    <md-input-container flex="90">
-                      <label>Pekerjaan</label>
-                      <md-select ng-model="vm.isiLayakHuni.pekerjaan" name="pekerjaan" required>
-                        <md-optgroup label="Pekerjaan">
-                          <md-option ng-value="kerja.kerja" ng-repeat="kerja in vm.pekerjaan">{{kerja.kerja}}</md-option>
-                        </md-optgroup>
-                      </md-select>
-                      <div ng-messages="formLayakHuni.pekerjaan.$error">
-                        <div ng-message="required">Harus diisi.</div>
-                      </div>
-                    </md-input-container>
-                  </div>
-
-                  <div layout="row" flex>
-                    <md-input-container flex="50">
-                      <label>Kecamatan</label>
-                      <!-- clear property desa if kecamatan changed -->
-                      <md-select ng-model="vm.isiLayakHuni.kecamatan" name="kecamatan" required ng-change="vm.removeDesa()">
-                        <md-optgroup label="Kecamatan">
-                          <md-option ng-value="kecamatan" ng-repeat="kecamatan in vm.kecamatanDesa">{{kecamatan.Nama_Kecamatan}}</md-option>
-                        </md-optgroup>
-                      </md-select>
-                      <div ng-messages="formLayakHuni.kecamatan.$error">
-                        <div ng-message="required">Harus diisi.</div>
-                      </div>
-                    </md-input-container>
-
-                    <md-input-container flex="50">
-                      <label>Desa</label>
-                      <md-select ng-model="vm.isiLayakHuni.desa" name="desa" required ng-disabled="!vm.isiLayakHuni.kecamatan">
-                        <md-optgroup label="Kecamatan {{vm.isiLayakHuni.Kecamatan.Nama_Kecamatan}}">
-                          <md-option ng-value="desa.DESA_ID" ng-repeat="desa in vm.isiLayakHuni.kecamatan.desa">{{desa.NAMA}}</md-option>
-                        </md-optgroup>
-                      </md-select>
-                      <div ng-messages="formLayakHuni.desa.$error">
-                        <div ng-message="required">Harus diisi.</div>
-                      </div>
-                    </md-input-container>
-                  </div>
-
-                </div>
-              </div>
-            </md-content>
-          </md-tab>
-          <md-tab label="Bagian 1">2</md-tab>
-          <md-tab label="Bagian 2">3</md-tab>
-        </md-tabs>
+        </form>
 
         <md-button ng-click="vm.back()" class="md-raised" ng-hide="tabIndex === 0">
           <i class="glyphicon glyphicon-chevron-left"></i> Sebelumnya
@@ -103,7 +110,7 @@
           Selanjutnya <i class="glyphicon glyphicon-chevron-right"></i>
         </md-button>
 
-      </form>
+      </div>
 
     </div>
   </div>
