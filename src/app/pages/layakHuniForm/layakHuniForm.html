@@ -12,7 +12,9 @@
         <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
 
           <div class="form-tab">
+
             <md-tabs md-dynamic-height="true" md-selected="tabIndex" md-no-pagination="true">
+
               <md-tab label="Data Diri">
                 <md-content layout-padding>
                   <h4>Data Diri</h4>
@@ -28,7 +30,7 @@
                       </md-input-container>
 
                       <div layout="row" flex>
-                        <md-input-container flex="90">
+                        <md-input-container flex="60">
                           <label>Jenis Kelamin</label>
                           <md-select ng-model="vm.isiLayakHuni.jenisKelamin" name="jk" required>
                             <md-optgroup label="Jenis Kelamin">
@@ -39,17 +41,17 @@
                             <div ng-message="required">Harus diisi.</div>
                           </div>
                         </md-input-container>
-                      </div>
 
-                      <md-input-container class="md-block">
-                        <label>Usia (dalam tahun)</label>
-                        <input type="number" name="usia" id="" ng-model="vm.isiLayakHuni.usia" required min="15" max="110"></input>
-                        <div ng-messages="formLayakHuni.usia.$error">
-                          <div ng-message="required">Harus diisi</div>
-                          <div ng-message="min">Terlalu muda</div>
-                          <div ng-message="max">Terlalu tua</div>
-                        </div>
-                      </md-input-container>
+                        <md-input-container class="md-block" flex="40">
+                          <label>Usia (dalam tahun)</label>
+                          <input type="number" name="usia" id="" ng-model="vm.isiLayakHuni.usia" required min="15" max="110"></input>
+                          <div ng-messages="formLayakHuni.usia.$error">
+                            <div ng-message="required">Harus diisi</div>
+                            <div ng-message="min">Terlalu muda</div>
+                            <div ng-message="max">Terlalu tua</div>
+                          </div>
+                        </md-input-container>
+                      </div>
 
                       <div layout="row" flex>
                         <md-input-container flex="90">
@@ -65,6 +67,7 @@
                         </md-input-container>
                       </div>
 
+                      <label>Tempat Tinggal</label>
                       <div layout="row" flex>
                         <md-input-container flex="50">
                           <label>Kecamatan</label>
@@ -96,8 +99,291 @@
                   </div>
                 </md-content>
               </md-tab>
-              <md-tab label="Bagian 1">2</md-tab>
-              <md-tab label="Bagian 2">3</md-tab>
+
+              <md-tab label="Bagian 1">
+                <md-content layout-padding>
+                  <h4>Bagian 1</h4>
+                  <div layout="column" flex>
+                    <div>
+
+                      <label>Keamanan Kota</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Rasa aman warga kota</label>
+                          <md-select ng-model="vm.isiLayakHuni.aman" name="aman" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.aman.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kenyamanan warga berjalan/ berkendara di malam hari</label>
+                          <md-select ng-model="vm.isiLayakHuni.nyaman" name="nyaman" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.nyaman.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Fasilitas Keamanan</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kemudahan mendapatkan pelayanan keamanan dari kepolisian</label>
+                          <md-select ng-model="vm.isiLayakHuni.mudahPolisi" name="mudahPolisi" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.mudahPolisi.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kualitas pelayanan keamanan dari kepolisian</label>
+                          <md-select ng-model="vm.isiLayakHuni.kualitasPolisi" name="kualitasPolisi" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kualitasPolisi.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Politik Kota</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kestabilan kota dari kejadian unjuk rasa</label>
+                          <md-select ng-model="vm.isiLayakHuni.unjukRasa" name="unjukRasa" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.unjukRasa.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kebebasan menyampaikan hak dan pendapat politik</label>
+                          <md-select ng-model="vm.isiLayakHuni.bebasPendapat" name="bebasPendapat" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.bebasPendapat.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Mitigasi Bencana</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Rasa aman warga kota terhadap bencana</label>
+                          <md-select ng-model="vm.isiLayakHuni.amanBencana" name="amanBencana" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.amanBencana.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kecepatan peringatan dini bencana</label>
+                          <md-select ng-model="vm.isiLayakHuni.peringatanDini" name="peringatanDini" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.peringatanDini.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Kesehatan Kota</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kesehatan lingkungan tempat tinggal</label>
+                          <md-select ng-model="vm.isiLayakHuni.sehatLingkungan" name="sehatLingkungan" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.sehatLingkungan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Rasa aman warga dari penyakit menular</label>
+                          <md-select ng-model="vm.isiLayakHuni.penyakitMenular" name="penyakitMenular" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.penyakitMenular.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Fasilitas Kesehatan</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kemudahan mendapatkan pelayanan kesehatan</label>
+                          <md-select ng-model="vm.isiLayakHuni.layananKesehatan" name="layananKesehatan" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.layananKesehatan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kualitas layanan kesehatan</label>
+                          <md-select ng-model="vm.isiLayakHuni.kualitasLayananKesehatan" name="kualitasLayananKesehatan" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kualitasLayananKesehatan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Kebersihan Kota</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kualitas kebersihan udara</label>
+                          <md-select ng-model="vm.isiLayakHuni.kebersihanUdara" name="kebersihanUdara" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kebersihanUdara.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kualitas kebersihan sungai</label>
+                          <md-select ng-model="vm.isiLayakHuni.kebersihanSungai" name="kebersihanSungai" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kebersihanSungai.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kualitas kebersihan jalan kota</label>
+                          <md-select ng-model="vm.isiLayakHuni.kebersihanJalan" name="kebersihanJalan" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kebersihanJalan.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Persampahan</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kualitas layanan persampahan</label>
+                          <md-select ng-model="vm.isiLayakHuni.layananSampah" name="layananSampah" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.layananSampah.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Perekonomian Kota</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kemudahan mendapatkan pekerjaan</label>
+                          <md-select ng-model="vm.isiLayakHuni.mudahKerja" name="mudahKerja" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.mudahKerja.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kemudahan mengembangkan usaha</label>
+                          <md-select ng-model="vm.isiLayakHuni.pengembanganUsaha" name="pengembanganUsaha" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.pengembanganUsaha.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Keterjangkauan biaya hidup</label>
+                          <md-select ng-model="vm.isiLayakHuni.biayaHidup" name="biayaHidup" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.biayaHidup.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Fasilitas Ekonomi</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kualitas pasar tradisional</label>
+                          <md-select ng-model="vm.isiLayakHuni.pasarTradisional" name="pasarTradisional" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.pasarTradisional.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                    </div>
+                  </div>
+                </md-content>
+              </md-tab>
+
+              <md-tab label="Bagian 2">
+                3
+              </md-tab>
             </md-tabs>
           </div>
 

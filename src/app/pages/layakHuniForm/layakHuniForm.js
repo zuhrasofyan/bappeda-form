@@ -20,6 +20,34 @@ function layakHuniFormController(SurveyLayakHuniService, configSettings, $scope)
       id: 2
     }
   ];
+
+  vm.rating = [
+    {
+      nama: 'Sangat Baik',
+      nilai: 5
+    },
+    {
+      nama: 'Baik',
+      nilai: 4
+    },
+    {
+      nama: 'Biasa Saja',
+      nilai: 3
+    },
+    {
+      nama: 'Buruk',
+      nilai: 2
+    },
+    {
+      nama: 'Sangat Buruk',
+      nilai: 1
+    },
+    {
+      nama: 'Tidak Tahu',
+      nilai: null
+    }
+  ];
+
   vm.pekerjaan = [
     {
       kerja: 'PNS/TNI/Polri',
