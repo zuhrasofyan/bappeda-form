@@ -141,3 +141,13 @@ a {
   }
 }
 
+md-input-container.md-default-theme .md-placeholder, md-input-container .md-placeholder, md-input-container.md-default-theme label, md-input-container label {
+  font-weight: normal;
+  color: rgba(0,0,0,1);
+}
+
+md-select.md-default-theme .md-select-value.md-select-placeholder, md-select .md-select-value.md-select-placeholder {
+  color: rgba(0,0,0,1);
+}
+
+
