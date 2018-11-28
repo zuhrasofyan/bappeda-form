@@ -32,7 +32,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
       component: 'userDashboard'
     })
     .state('formSurvey', {
-      url: '/surveyLayakHuni',
+      url: '/survey-layak-huni',
       component: 'layakHuniForm'
     });
 
