@@ -6,7 +6,7 @@ angular
     controllerAs: 'vm'
   });
 
-function userDashboardController(UserService, $http) {
+function userDashboardController(UserService, $http, configSettings) {
   var vm = this;
 
   // general
@@ -21,7 +21,7 @@ function userDashboardController(UserService, $http) {
   vm.user = getUser();
 
   function allUser() {
-    return $http.get('http://localhost:1337/officer/get-all-user');
+    return $http.get(configSettings.baseUrl + 'officer/get-all-user');
   }
 
   allUser().then(function (d) {

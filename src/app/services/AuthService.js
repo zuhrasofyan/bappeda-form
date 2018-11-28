@@ -1,10 +1,10 @@
 angular
   .module('app')
-  .service('AuthService', function ($http, $rootScope, store, UserService, authManager, $state) {
+  .service('AuthService', function ($http, $rootScope, store, UserService, authManager, $state, configSettings) {
     var vm = this;
     // var isAuthenticated = false;
     function submitLogin(loginData) {
-      $http.post('http://localhost:1337/auth/login', {
+      $http.post(configSettings.baseUrl + 'auth/login', {
         email: loginData.email,
         password: loginData.password
       }).then(function (result) {

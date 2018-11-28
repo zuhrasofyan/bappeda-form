@@ -6,7 +6,7 @@ angular
     controllerAs: 'quote'
   });
 
-function quoteController($http, store, UserService) {
+function quoteController($http, store, UserService, configSettings) {
   var vm = this;
   vm.privateQuote = null;
 
@@ -16,13 +16,13 @@ function quoteController($http, store, UserService) {
   vm.test = test;
 
   function getOpenQuote() {
-    $http.get('http://localhost:1337/quote/open').then(function success(response) {
+    $http.get(configSettings.baseUrl + 'quote/open').then(function success(response) {
       vm.openQuote = response.data.quote;
     });
   }
 
   function getPrivateQuote() {
-    $http.get('http://localhost:13m37/quote/protected').then(function success(response) {
+    $http.get(configSettings.baseUrl + 'quote/protected').then(function success(response) {
       vm.privateQuote = response.data.quote;
     });
   }
