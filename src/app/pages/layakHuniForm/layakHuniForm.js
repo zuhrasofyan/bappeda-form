@@ -99,7 +99,7 @@ function layakHuniFormController(SurveyLayakHuniService, configSettings, $scope)
     }
   };
   vm.next = function () {
-    if ($scope.tabIndex < 2) {
+    if ($scope.tabIndex < 3) {
       $scope.tabIndex++;
     }
   };
