@@ -6,7 +6,7 @@ angular
     controllerAs: 'vm'
   });
 
-function layakHuniFormController(SurveyLayakHuniService, configSettings, $scope) {
+function layakHuniFormController(configSettings, $scope, SurveyLayakHuniService) {
   var vm = this;
 
   // Construct initial data first for the survey form
@@ -103,4 +103,9 @@ function layakHuniFormController(SurveyLayakHuniService, configSettings, $scope)
       $scope.tabIndex++;
     }
   };
+
+   function clickFormLayakHuni(data) {
+    SurveyLayakHuniService.submitLayakHuniForm(data);
+  }
+  vm.clickFormLayakHuni = clickFormLayakHuni;
 }

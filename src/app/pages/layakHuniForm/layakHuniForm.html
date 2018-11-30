@@ -7,7 +7,7 @@
 
         <h3>Form isian layak huni</h3>
 
-        <!-- <pre><code>{{vm.isiLayakHuni}}</code></pre> -->
+        <pre><code>{{vm.isiLayakHuni}}</code></pre>
 
         <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
 
@@ -631,12 +631,12 @@
 
                         <md-input-container flex>
                           <label>Frekuensi warga kota menikmati festifal budaya</label>
-                          <md-select ng-model="vm.isiLayakHuni.frekuensiFestifalBudaya" name="frekuensiFestifalBudaya" required>
+                          <md-select ng-model="vm.isiLayakHuni.frekuensiFestivalBudaya" name="frekuensiFestivalBudaya" required>
                             <md-optgroup label="Rating">
                               <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
                             </md-optgroup>
                           </md-select>
-                          <div ng-messages="formLayakHuni.frekuensiFestifalBudaya.$error">
+                          <div ng-messages="formLayakHuni.frekuensiFestivalBudaya.$error">
                             <div ng-message="required">Harus diisi.</div>
                           </div>
                         </md-input-container>
@@ -946,11 +946,18 @@
             </md-tabs>
           </div>
 
+          <md-content>
+            <div style="color: red;" ng-show="formLayakHuni.$invalid && tabIndex === 3">Masih ada bagian form yang belum selesai anda isi</div>
+             <md-button type="submit" class="md-primary md-raised" aria-label="submit" ng-disabled="formLayakHuni.$invalid" ng-show="tabIndex === 3">
+              Kirim <i class="glyphicon glyphicon-ok"></i>
+            </md-button>
+          </md-content>
+
+
+
         </form>
 
-        <div>
-          <span style="color: red;" ng-show="formLayakHuni.$invalid && tabIndex === 3">Masih ada bagian form yang belum selesai anda isi</span>
-        </div>
+
 
         <md-button ng-click="vm.back()" class="md-warn md-raised" ng-hide="tabIndex === 0">
           <i class="glyphicon glyphicon-chevron-left"></i> Sebelumnya
@@ -959,9 +966,7 @@
           Selanjutnya <i class="glyphicon glyphicon-chevron-right"></i>
         </md-button>
 
-        <md-button type="submit" class="md-primary md-raised" aria-label="submit" ng-disabled="formLayakHuni.$invalid" ng-show="tabIndex === 3">
-          Kirim <i class="glyphicon glyphicon-ok"></i>
-        </md-button>
+
 
       </div>
 
