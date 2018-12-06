@@ -4,7 +4,8 @@ angular
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
+  // $locationProvider.html5Mode(true);
+  // $locationProvider.hashPrefix('!');
 
   $stateProvider
     .state('home', {

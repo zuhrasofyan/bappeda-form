@@ -104,7 +104,7 @@ function layakHuniFormController(configSettings, $scope, SurveyLayakHuniService)
     }
   };
 
-   function clickFormLayakHuni(data) {
+  function clickFormLayakHuni(data) {
     SurveyLayakHuniService.submitLayakHuniForm(data);
   }
   vm.clickFormLayakHuni = clickFormLayakHuni;
