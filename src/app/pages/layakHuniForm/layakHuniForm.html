@@ -7,7 +7,7 @@
 
         <h3>Form isian layak huni</h3>
 
-        <pre><code>{{vm.isiLayakHuni}}</code></pre>
+        <!-- <pre><code>{{vm.isiLayakHuni}}</code></pre> -->
 
         <form name="formLayakHuni" novalidate ng-submit="formLayakHuni.$valid && vm.clickFormLayakHuni(vm.isiLayakHuni)">
 
@@ -544,6 +544,33 @@
                             </md-optgroup>
                           </md-select>
                           <div ng-messages="formLayakHuni.kualitasAdministrasi.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+                      </div>
+
+                      <label>Fasilitas Peribadatan/ Pelayanan Keagamaan</label>
+                      <div layout="column" flex-gt-sm="70" flex="100">
+                        <md-input-container flex>
+                          <label>Kualitas Pelayanan Keagamaan/label>
+                          <md-select ng-model="vm.isiLayakHuni.kualitasLayananAgama" name="kualitasLayananAgama" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kualitasLayananAgama.$error">
+                            <div ng-message="required">Harus diisi.</div>
+                          </div>
+                        </md-input-container>
+
+                        <md-input-container flex>
+                          <label>Kebersihan fasilitas keagamaan</label>
+                          <md-select ng-model="vm.isiLayakHuni.kebersihanFasilitasAgama" name="kebersihanFasilitasAgama" required>
+                            <md-optgroup label="Rating">
+                              <md-option ng-value="rating.nilai" ng-repeat="rating in vm.rating">{{rating.nama}}</md-option>
+                            </md-optgroup>
+                          </md-select>
+                          <div ng-messages="formLayakHuni.kebersihanFasilitasAgama.$error">
                             <div ng-message="required">Harus diisi.</div>
                           </div>
                         </md-input-container>

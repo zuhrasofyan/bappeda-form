@@ -58,6 +58,8 @@ function SurveyLayakHuniService($http, $state, configSettings) {
       kualitasPendidikan: data.kualitasPendidikan,
       pelayananAdministrasi: data.pelayananAdministrasi,
       kualitasAdministrasi: data.kualitasAdministrasi,
+      kualitasLayananAgama: data.kualitasLayananAgama,
+      kebersihanFasilitasAgama: data.kebersihanFasilitasAgama,
       kemudahanTamanKota: data.kemudahanTamanKota,
       kualitasTamanKota: data.kualitasTamanKota,
       difabelTamanKota: data.difabelTamanKota,
